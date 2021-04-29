@@ -5,6 +5,10 @@
 [![GitHub stars](https://img.shields.io/github/stars/David-Development/Chicken-Monitor.svg)](https://github.com/David-Development/Chicken-Monitor/stargazers)
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![CHANGELOG.md](https://img.shields.io/badge/Changelog-CHANGELOG.md-informational)](CHANGELOG.md)
+
+
+## Donate
+
 [<img src="https://raw.githubusercontent.com/stefan-niedermann/paypal-donate-button/master/paypal-donate-button.png"
       alt="Donate with PayPal"
       height="80">](https://www.paypal.com/donate?hosted_button_id=5TJ6LTEVTDF5J)
