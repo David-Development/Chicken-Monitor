@@ -1,0 +1,70 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+
+def secretsPropertiesFile = rootProject.file("secrets.properties")
+def secretsProperties = new Properties()
+secretsProperties.load(new FileInputStream(secretsPropertiesFile))
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "de.luhmer.chickenmonitor"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "PHONE_NUMBER", secretsProperties['PHONE_NUMBER'])
+        buildConfigField("String", "INFLUX_DB_TOKEN", secretsProperties['INFLUX_DB_TOKEN'])
+        buildConfigField("String", "INFLUX_DB_ORG", secretsProperties['INFLUX_DB_ORG'])
+        buildConfigField("String", "INFLUX_DB_BUCKET", secretsProperties['INFLUX_DB_BUCKET'])
+        // buildConfigField("String", "CONFIG_URL", secretsProperties['CONFIG_URL'])
+        buildConfigField("String", "DOWNLOAD_URL", secretsProperties['DOWNLOAD_URL'])
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        // Flag to enable support for the new language APIs
+        // coreLibraryDesugaringEnabled true
+        // Sets Java compatibility to Java 8
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    // implementation "com.influxdb:influxdb-client-java:2.0.0"
+    // implementation 'org.influxdb:influxdb-java:2.5'
+    implementation 'org.greenrobot:eventbus:3.2.0'
+    implementation 'com.android.volley:volley:1.2.0'
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    // coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
+}
